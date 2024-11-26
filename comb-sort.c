@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "random.h"
+#include "config.h"
 
 // Function to find the next gap
 int getNextGap(int gap) {
@@ -38,19 +39,17 @@ int main() {
 
   start = clock();
 
-  int qty = 100000, min_value = -100, max_value = 100;
-
-  int arr[qty];
+  int arr[QUANTITY];
 
   srand(time(0));
 
-  for (int i = 0; i < qty; i++) {
-    arr[i] = randNumber(min_value, max_value);
+  for (int i = 0; i < QUANTITY; i++) {
+    arr[i] = randNumber(MIN_VALUE, MAX_VALUE);
   }
 
   printf("sorting array... \n");
 
-  combSort(arr, qty);
+  combSort(arr, QUANTITY);
 
   printf("sorted array\n");
 

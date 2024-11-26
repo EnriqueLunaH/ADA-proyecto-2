@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "random.h"
+#include "config.h"
 
 // Function to perform binary search
 int binarySearch(int arr[], int item, int low, int high) {
@@ -40,18 +41,16 @@ int main() {
 
   start = clock();
 
-  int qty = 1000, min_value = -100, max_value = 100;
-
-  int arr[qty];
+  int arr[QUANTITY];
 
   srand(time(0));
 
-  for (int i = 0; i < qty; i++) {
-    arr[i] = randNumber(min_value, max_value);
+  for (int i = 0; i < QUANTITY; i++) {
+    arr[i] = randNumber(MIN_VALUE, MAX_VALUE);
   }
 
   printf("sorting array...\n");
-  binaryInsertionSort(arr, qty);
+  binaryInsertionSort(arr, QUANTITY);
   printf("sorted array\n");
 
   end = clock();
