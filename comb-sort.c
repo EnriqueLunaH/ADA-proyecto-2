@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "random.h"
 #include "config.h"
 
 // Function to find the next gap
@@ -41,16 +40,23 @@ int main() {
 
   int arr[QUANTITY];
 
-  srand(time(0));
+  FILE *file;
 
-  for (int i = 0; i < QUANTITY; i++) {
-    arr[i] = randNumber(MIN_VALUE, MAX_VALUE);
+  file = fopen(FILENAME, "r");
+
+  if (file == NULL) {
+    printf("Error opening file!\n");
+    return 1;
   }
 
+  for (int i = 0; i < QUANTITY; i++) {
+    fscanf(file, "%d", &arr[i]);
+  }
+
+  fclose(file);
+
   printf("sorting array... \n");
-
   combSort(arr, QUANTITY);
-
   printf("sorted array\n");
 
   end = clock();

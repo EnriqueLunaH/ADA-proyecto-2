@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "random.h"
 #include "config.h"
 
 // Function to perform bubble sort
@@ -27,11 +26,24 @@ int main() {
 
   int arr[QUANTITY];
 
-  srand(time(0));
+  FILE *file;
+
+  file = fopen(FILENAME, "r");
+
+  if (file == NULL) {
+    printf("Error opening file!\n");
+    return 1;
+  }
 
   for (int i = 0; i < QUANTITY; i++) {
-    arr[i] = randNumber(MIN_VALUE, MAX_VALUE);
+    fscanf(file, "%d", &arr[i]);
   }
+
+  fclose(file);
+
+  printf("sorting array...\n");
+  bubbleSort(arr, QUANTITY);
+  printf("sorted array\n");
 
   printf("sorting array...\n");
   bubbleSort(arr, QUANTITY);
