@@ -45,10 +45,6 @@ int main() {
   bubbleSort(arr, QUANTITY);
   printf("sorted array\n");
 
-  printf("sorting array...\n");
-  bubbleSort(arr, QUANTITY);
-  printf("sorted array\n");
-
   end = clock();
   cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
 
